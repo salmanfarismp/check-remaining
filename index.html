@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <label for="hours-id">Enter Hours</label>
+    <input id="hours-id" type="text" />
+    <label for="minutes-id">Enter Minutes</label>
+    <input id="minutes-id" type="text" />
+    <button onclick="calculateRemainingTime()">yes</button>
+  </body>
+  <script>
+    function calculateRemainingTime() {
+      const completedHours = document.getElementById("hours-id").value;
+      const completedMinutes = document.getElementById("minutes-id").value;
+      // Validate input
+      if (
+        completedHours < 0 ||
+        completedHours > 8 ||
+        completedMinutes < 0 ||
+        completedMinutes >= 60
+      ) {
+        alert(
+          "Invalid input. Completed hours must be between 0 and 8, and completed minutes must be between 0 and 59."
+        );
+      }
+
+      // Get the current time
+      const currentTime = new Date();
+
+      // Calculate remaining hours
+      const remainingHours = 8 - completedHours;
+
+      // Calculate remaining time in milliseconds
+      const remainingTimeMillis =
+        remainingHours * 60 * 60 * 1000 - completedMinutes * 60 * 1000;
+
+      // Calculate completion time
+      const completionTimeMillis = currentTime.getTime() + remainingTimeMillis;
+      const completionTime = new Date(completionTimeMillis);
+
+      // Format the completion time as a string in 12-hour format
+      const hours = completionTime.getHours() % 12 || 12; // Convert to 12-hour format
+      const minutes = completionTime.getMinutes();
+      const ampm = completionTime.getHours() >= 12 ? "PM" : "AM";
+
+      const completionTimeString = `${hours}:${
+        minutes < 10 ? "0" : ""
+      }${minutes} ${ampm}`;
+
+      alert(`Your 8-hour shift will be completed at ${completionTimeString}.`);
+    }
+  </script>
+</html>
