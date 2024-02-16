@@ -4,55 +4,101 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Document</title>
+    <title>Remaining Time Calculator</title>
+    <link rel="stylesheet" href="/style.css" />
   </head>
   <body>
-    <label for="hours-id">Enter Hours</label>
-    <input id="hours-id" type="text" />
-    <label for="minutes-id">Enter Minutes</label>
-    <input id="minutes-id" type="text" />
-    <button onclick="calculateRemainingTime()">yes</button>
-  </body>
-  <script>
-    function calculateRemainingTime() {
-      const completedHours = document.getElementById("hours-id").value;
-      const completedMinutes = document.getElementById("minutes-id").value;
-      // Validate input
-      if (
-        completedHours < 0 ||
-        completedHours > 8 ||
-        completedMinutes < 0 ||
-        completedMinutes >= 60
-      ) {
-        alert(
-          "Invalid input. Completed hours must be between 0 and 8, and completed minutes must be between 0 and 59."
+    <div class="container">
+      <label class="label" for="hours-id">Enter Hours</label>
+      <input
+        id="hours-id"
+        class="input"
+        type="text"
+        placeholder="Current hours worked..."
+        required
+      />
+      <label class="label" for="minutes-id">Enter Minutes</label>
+      <input
+        id="minutes-id"
+        class="input"
+        type="text"
+        placeholder="Current minutes worked..."
+        required
+      />
+      <button class="button" onclick="calculateRemainingTime()">
+        Calculate
+      </button>
+    </div>
+    <!-- Modal Popup -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <span class="close" onclick="closeModal()">&times;</span>
+        <p id="modal-text"></p>
+      </div>
+    </div>
+    <script>
+      function calculateRemainingTime() {
+        const completedHours = parseInt(
+          document.getElementById("hours-id").value
+        );
+        const completedMinutes = parseInt(
+          document.getElementById("minutes-id").value
+        );
+        if (
+          isNaN(completedHours) ||
+          isNaN(completedMinutes) ||
+          completedHours < 0 ||
+          completedMinutes < 0 ||
+          completedHours > 8 ||
+          completedMinutes >= 60
+        ) {
+          document.querySelectorAll(".input").forEach((input) => {
+            if (!input.value) {
+              input.classList.add("error");
+            } else {
+              input.classList.remove("error");
+            }
+          });
+          return;
+        }
+        // Get the current time
+        const currentTime = new Date();
+        // Calculate remaining hours
+        const remainingHours = 8 - completedHours;
+        // Calculate remaining time in milliseconds
+        const remainingTimeMillis =
+          remainingHours * 60 * 60 * 1000 - completedMinutes * 60 * 1000;
+        // Calculate completion time
+        const completionTimeMillis =
+          currentTime.getTime() + remainingTimeMillis;
+        const completionTime = new Date(completionTimeMillis);
+        // Format the completion time as a string in 12-hour format
+        const hours = completionTime.getHours() % 12 || 12; // Convert to 12-hour format
+        const minutes = completionTime.getMinutes();
+        const ampm = completionTime.getHours() >= 12 ? "PM" : "AM";
+        const completionTimeString = `${hours}:${
+          minutes < 10 ? "0" : ""
+        }${minutes} ${ampm}`;
+        showModal(
+          `Your 8-hour shift will be completed at ${completionTimeString}.`
         );
       }
-
-      // Get the current time
-      const currentTime = new Date();
-
-      // Calculate remaining hours
-      const remainingHours = 8 - completedHours;
-
-      // Calculate remaining time in milliseconds
-      const remainingTimeMillis =
-        remainingHours * 60 * 60 * 1000 - completedMinutes * 60 * 1000;
-
-      // Calculate completion time
-      const completionTimeMillis = currentTime.getTime() + remainingTimeMillis;
-      const completionTime = new Date(completionTimeMillis);
-
-      // Format the completion time as a string in 12-hour format
-      const hours = completionTime.getHours() % 12 || 12; // Convert to 12-hour format
-      const minutes = completionTime.getMinutes();
-      const ampm = completionTime.getHours() >= 12 ? "PM" : "AM";
-
-      const completionTimeString = `${hours}:${
-        minutes < 10 ? "0" : ""
-      }${minutes} ${ampm}`;
-
-      alert(`Your 8-hour shift will be completed at ${completionTimeString}.`);
-    }
-  </script>
+      function showModal(message) {
+        const modal = document.getElementById("modal");
+        const modalText = document.getElementById("modal-text");
+        modalText.textContent = message;
+        modal.style.display = "block";
+      }
+      function closeModal() {
+        const modal = document.getElementById("modal");
+        modal.style.display = "none";
+      }
+      window.onclick = function (event) {
+        const modal = document.getElementById("modal");
+        if (event.target == modal) {
+          modal.style.display = "none";
+        }
+      };
+    </script>
+  </body>
 </html>
