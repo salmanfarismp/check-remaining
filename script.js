@@ -51,7 +51,7 @@ function calculateRemainingTime(event) {
   // Get the day of the week (0 for Sunday, 1 for Monday, ..., 6 for Saturday)
   const dayOfWeek = currentTime.getDay();
 
-  if (dayOfWeek === 1 || dayOfWeek === 6) {
+  if (dayOfWeek === 0 || dayOfWeek === 6) {
     showModal(`It's weekend bro get some chill!! 🥳`, "weekend");
     return;
   }
