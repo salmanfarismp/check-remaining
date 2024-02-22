@@ -1,80 +1,90 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Remaining Time Calculator</title>
-    <link rel="stylesheet" href="./style.css">
-</head>
-<body>
+    <link rel="stylesheet" href="./style.css" />
+  </head>
+  <body>
     <div class="container">
       <h2>Calculate the time when you can jump out of office 😅</h2>
-        <form id="time-form">
-            <label class="label" for="hours-id">Enter Hours</label>
-            <input
-                id="hours-id"
-                class="input"
-                type="text"
-                placeholder="Current hours worked..."
-                required
-            />
-            <label class="label" for="minutes-id">Enter Minutes</label>
-            <input
-                id="minutes-id"
-                class="input"
-                type="text"
-                placeholder="Current minutes worked..."
-                required
-            />
-            <label class="label" for="leave-id">Enter Leave in Hours</label>
-            <input
-                id="leave-id"
-                class="input"
-                type="text"
-                placeholder="Current booked leave..."
-                required
-            />
-            <button class="button" type="submit">
-                Calculate
-            </button>
-        </form>
+      <form id="time-form">
+        <label class="label" for="hours-id">Enter Hours</label>
+        <input
+          id="hours-id"
+          class="input"
+          type="text"
+          placeholder="Current hours worked..."
+          required
+        />
+        <label class="label" for="minutes-id">Enter Minutes</label>
+        <input
+          id="minutes-id"
+          class="input"
+          type="text"
+          placeholder="Current minutes worked..."
+          required
+        />
+        <label class="label" for="leave-id">Enter Leave in Hours</label>
+        <input
+          id="leave-id"
+          class="input"
+          type="text"
+          placeholder="Current booked leave..."
+          required
+        />
+        <div style="display: flex; width: 100%; justify-content: space-between">
+          <button class="button" type="submit">Calculate</button>
+          <div style="display: flex; align-items: center">
+            <h6 style="margin: 0">Stressed? we got you bro &nbsp;</h6>
+            <a
+              href="https://www.nytimes.com/games/wordle/index.html"
+              class="button"
+              style="background-color: yellowgreen"
+            >
+              Click Here
+            </a>
+          </div>
+        </div>
+      </form>
     </div>
     <!-- Modal Popup -->
     <div id="modal" class="modal">
-        <div class="modal-content">
-            <span class="close" id="close-modal">&times;</span>
-            <h2 id="modal-text"></h2>
-            <img 
-              id="niggesh-img"
-              src="https://resizing.flixster.com/PRhs51V9MVHCrK5_7oIwRT481Kc=/300x300/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p11210923_i_h9_aa.jpg" 
-              alt="Suresh" 
-              srcset=""
-            >
-            <img 
-              id="friday-img"
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZkghU_7BHdcZLEBfTdO5frz6VfC3Uo1Hk0mIoqX0_PyJjIbvr" 
-              alt="weekend-img" 
-              srcset=""
-            >
-            <img 
-              id="monday-img"
-              src="https://c.tenor.com/ZynUzoZFKQIAAAAd/tenor.gif" 
-              alt="Monday" 
-              srcset=""
-            >
-            <img 
-              id="other-img"
-              src="https://media.kulfyapp.com/0XF3Z9/0XF3Z9-360.gif" 
-              alt="Other days" 
-              />
-              <img 
-              id="weekend-img"
-              src="https://i.pinimg.com/originals/4e/59/eb/4e59ebfa33c5ee2db42e058dadd0050c.gif" 
-              alt="Weekend days" 
-              />
-        </div>
+      <div class="modal-content">
+        <span class="close" id="close-modal">&times;</span>
+        <h2 id="modal-text"></h2>
+        <img
+          id="niggesh-img"
+          src="https://resizing.flixster.com/PRhs51V9MVHCrK5_7oIwRT481Kc=/300x300/v2/https://resizing.flixster.com/-XZAfHZM39UwaGJIFWKAE8fS0ak=/v3/t/assets/p11210923_i_h9_aa.jpg"
+          alt="Suresh"
+          srcset=""
+        />
+        <img
+          id="friday-img"
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTZkghU_7BHdcZLEBfTdO5frz6VfC3Uo1Hk0mIoqX0_PyJjIbvr"
+          alt="weekend-img"
+          srcset=""
+        />
+        <img
+          id="monday-img"
+          src="https://c.tenor.com/ZynUzoZFKQIAAAAd/tenor.gif"
+          alt="Monday"
+          srcset=""
+        />
+        <img
+          id="other-img"
+          src="https://media.kulfyapp.com/0XF3Z9/0XF3Z9-360.gif"
+          alt="Other days"
+        />
+        <img
+          id="weekend-img"
+          src="https://i.pinimg.com/originals/4e/59/eb/4e59ebfa33c5ee2db42e058dadd0050c.gif"
+          alt="Weekend days"
+        />
+      </div>
     </div>
     <script src="./script.js"></script>
-</body>
+  </body>
 </html>
