@@ -15,7 +15,9 @@
         <input
           id="hours-id"
           class="input"
-          type="text"
+          type="number"
+          min="0"
+          max="8"
           placeholder="Current hours worked..."
           required
         />
@@ -23,7 +25,9 @@
         <input
           id="minutes-id"
           class="input"
-          type="text"
+          type="number"
+          min="0"
+          max="60"
           placeholder="Current minutes worked..."
           required
         />
@@ -31,23 +35,15 @@
         <input
           id="leave-id"
           class="input"
-          type="text"
+          type="number"
+          min="0"
+          max="8"
+          value="0"
           placeholder="Current booked leave..."
           required
         />
-        <div style="display: flex; width: 100%; justify-content: space-between">
-          <button class="button" type="submit">Calculate</button>
-          <div style="display: flex; align-items: center">
-            <h6 style="margin: 0">Come on, let's solve a puzzle together! &nbsp;</h6>
-            <a
-              href="https://g.co/arts/45WtwuTEs3YxCstD8"
-              class="button"
-              style="background-color: yellowgreen"
-            >
-              Click Here
-            </a>
-          </div>
-        </div>
+
+        <button class="button" type="submit">Calculate</button>
       </form>
     </div>
     <!-- Modal Popup -->
@@ -75,7 +71,7 @@
         />
         <img
           id="other-img"
-          src="https://media.kulfyapp.com/0XF3Z9/0XF3Z9-360.gif"
+          src="https://media1.tenor.com/m/ktUbea2k8RIAAAAC/stare-blank.gif"
           alt="Other days"
         />
         <img
